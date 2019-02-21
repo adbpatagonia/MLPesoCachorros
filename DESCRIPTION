@@ -1,0 +1,11 @@
+Package: MLPesoCachorros
+Title: MLPesoCachorros
+Version: 0.0.0.9000
+Authors@R: person("Alejandro", "Buren",
+                                             email = "aleburen@gmail.com",
+                                             role = c("aut", "cre"))
+Description: Este es un proyecto para analizar los efectos de condiciones Oceanicas sobre el peso de cachorros de 	extit{Mirounga leonina} en la isla 25 de Mayo
+Depends: R (>= 3.5.1)
+License: NA
+Encoding: UTF-8
+LazyData: true
