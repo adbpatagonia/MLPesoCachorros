@@ -93,9 +93,13 @@ p5 <- ggplot(mldat, aes(x = evento, y = pesos, color = sexo , group = evs)) +
   geom_point(alpha = 0.5, position = position_jitterdodge()) +
   #  geom_line(data = subset(df, sexo == 'Hembra'), aes(x = year, y = potencia.std), color = 'black') +
   theme_sleek() +
-  #  xlab('Año') +
-  #  ylab('Peso (Kg)') +
+    xlab('Evento') +
+    ylab('Peso (Kg)') +
   theme(legend.position = c(0.1,0.9))
 
 # ajustar
 m1 <- lm(data = df, pesos.std ~ potencia.std + sexo + year)
+
+
+# salvar graficos ----
+cowplot::ggsave(plot = p5, filename = 'output/PesoXEvent.png')
