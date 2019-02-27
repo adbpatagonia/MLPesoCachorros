@@ -11,7 +11,7 @@
 # 3. SAM. Downloaded from https://legacy.bas.ac.uk/met/gjma/sam.html  'data-raw/newsam.1957.2007.txt'
 
 # cargar funciones ----
-#source('R/compile_rmd.R')
+source('R/compile_rmd.R')
 source('R/standardise_variables.r')
 
 # cargar paquetes ----
@@ -19,7 +19,7 @@ library('tidyverse')
 library('cowplot')
 library('ggsidekick')
 library('tidybayes')
-library('plotly')
+#library('plotly')
 
 # cargar datos ----
 ml <- read.csv('data/MLpesos.csv', header = T, as.is = T)

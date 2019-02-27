@@ -1,0 +1,195 @@
+---
+title: ""
+bibliography: WCT_biblio.bib   # bibliographic library. Place in same folder as .Rmd
+output:
+  html_document:
+    number_sections: no
+    theme: readable
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(width = 1000)
+```
+
+
+ (*Mirounga leonina*) @Cope_etal_2017.
+
+## Approaches   
+dd
+ 
+ * **Population Viability Analysis (PVA):** as 
+ * **Hildebrand and Kershner (2000):** as.
+ * **Combined approach:** as.
+ 
+### Considerations
+
+
+
+### Population Viability Analysis (PVA)  
+
+
+
+###  Hildebrand and Kershner (2000)   
+
+  
+   
+```{r surfaceploteasy, fig.width  = 9, fig.height = 9, echo=FALSE, message=FALSE, warning=FALSE, fig.cap ="Figure 1. Illustration of Hildebrand and Kershner (2000)'s method. Mortality rate varies between 10% and 40%, and the density of Cutththroat Trout varies between 40 and 80 fish/km. The plane indicates the Minimum Stream Length required."}
+library(tidyverse)
+library(plotly)
+library(cowplot)
+
+MSL <- function(N, s, D){
+  MSL <- N / ((1-s)*D)
+  return(MSL)
+}
+N <- seq(3000, 5000, 1000)
+s <- seq(0.1,.4,.01)
+D <- seq(to = 0.080, from =  0.04, by = 0.005)    # 55 fish per km of stream
+ddat <- data.frame(N = NULL, s = NULL, D = NULL, habreq = NULL)
+for (i in 1:length(N)) {
+  for (j in 1:length(D)) {
+    habreq <- MSL(N[i], s, D[j])/1000
+    dat <- data.frame(N[i], s, D[j], habreq)
+    ddat <- rbind(ddat, dat)
+  }
+}
+ddat <- ddat %>%
+  rename(N = N.i., D = D.j.)
+
+x <- unlist(as.vector(c(subset(ddat, N == N[1], select = s))))
+y <- unlist(as.vector(c(subset(ddat, N == N[1], select = D))))
+z <- as.vector(ddat$habreq)
+dim(z) <- c(length(x),length(N))
+pdata <- list(as.vector(x), as.vector(y), z)
+names(pdata) <- c('x', 'y', 'z')
+
+pl <- plot_ly(x = ~x * 100,
+              y = ~y * 1000,
+              z = ~z[,3],
+              type = 'mesh3d',
+               opacity = 0.3,
+              showlegend = FALSE,
+              hoverinfo = 'x',
+              text = paste("Minimum Stream Length: ", round(z[,3],1), 'km',
+                           "<br>",
+                           'Target Population Size: ', N[1], 'Trout',
+                           "<br>",
+                           'Loss rate: ', x * 100, '%',
+                           "<br>",
+                           'CT Density: ', y*1000, 'fish/km')) %>%
+  layout(
+    title = "",
+    scene = list(
+      xaxis = list(title = "Loss rate %"),
+      yaxis = list(title = "CT Density (fish/km)"),
+      zaxis = list(title = "MSL (km)")
+    ))
+
+
+pl
+
+```
+  
+
+
+
+  
+ 
+  
+###  Preliminary implementation of Hildebrand and Kershner:    
+
+
+ 
+```{r surfaceplot, fig.width  = 9, fig.height = 9, echo=FALSE, message=FALSE, warning=FALSE, fig.cap ="Figure 2. Preliminary implementation of Hildebrand and Kershner (2000)'s method. Mortality rate varies between 10% and 40%, and the density of Cutththroat Trout varies between 40 and 80 fish/km. The colored planes refer to target population sizes of 3,000 (blue), 4,000 (orange), and 5,000 (green) Cutthroat Trout. All values > 100km have been removed. Please note that the user can rotate, and zoom in the plot.." }
+library(tidyverse)
+library(plotly)
+library(cowplot)
+MSL <- function(N, s, D){
+  MSL <- N / ((1-s)*D)
+  return(MSL)
+}
+N <- seq(3000, 5000, 1000)
+s <- seq(0.1,.4,.01)
+D <- seq(to = 0.080, from =  0.04, by = 0.005)    # 55 fish per km of stream
+ddat <- data.frame(N = NULL, s = NULL, D = NULL, habreq = NULL)
+for (i in 1:length(N)) {
+  for (j in 1:length(D)) {
+    habreq <- MSL(N[i], s, D[j])/1000
+    dat <- data.frame(N[i], s, D[j], habreq)
+    ddat <- rbind(ddat, dat)
+  }
+}
+ddat <- ddat %>%
+  rename(N = N.i., D = D.j.)
+
+x <- unlist(as.vector(c(subset(ddat, N == N[1], select = s))))
+y <- unlist(as.vector(c(subset(ddat, N == N[1], select = D))))
+z <- as.vector(ddat$habreq)
+dim(z) <- c(length(x),length(N))
+pdata <- list(as.vector(x), as.vector(y), z)
+names(pdata) <- c('x', 'y', 'z')
+
+pl <- plot_ly(x = ~x * 100,
+              y = ~y * 1000,
+              z = ~z[,1],
+              type = 'mesh3d',
+               opacity = 0.3,
+              hoverinfo = 'text',
+              text = paste("Minimum Stream Length: ", round(z[,1],1), 'km',
+                           "<br>",
+                           'Target Population Size: ', N[1], 'Trout',
+                           "<br>",
+                           'Mortality rate: ', x * 100, '%',
+                           "<br>",
+                           'CT Density: ', y*1000, 'fish/km')) %>%
+  layout(
+    title = "",
+    scene = list(
+      xaxis = list(title = "Mortality rate %"),
+      yaxis = list(title = "CT Density (fish/km)"),
+      zaxis = list(title = "MSL (km)", range = c(40, 100))
+    ))
+
+for (i in 2:length(N)) {
+  pl <- add_trace(pl, type = 'mesh3d',
+                  opacity = 0.3,
+                  x = x * 100,
+                  y = y * 1000,
+                  z = z[,i],
+                  hoverinfo = 'text',
+                  text = paste("Minimum Stream Length: ", round(z[,i],1), 'km',
+                               "<br>",
+                               'Target Population Size: ', N[i], 'Trout',
+                               "<br>",
+                               'Mortality rate: ', x * 100, '%',
+                               "<br>",
+                               'CT Density: ', y*1000, 'fish/km'))
+}
+# benchmark <- rep(100, length(z[,1]))
+# pl <- add_trace(pl, type = 'mesh3d',
+#                 # Setup triangle vertices
+#                 x = x * 100,
+#                 y = y * 1000,
+#                 z = benchmark,
+#                 hoverinfo = 'text',
+#                 text = paste("Stream Length: 100 km"),
+#                 intensity = c(0, 0.5, 1),
+#                 colorscale = list(c(0, 'rgb(105, 105, 105)'),
+#                                   c(0.5, 'rgb(105, 105, 105)'),
+#                                   c(1, 'rgb(105, 105, 105)')),
+#                 showscale = FALSE)
+pl
+
+```
+
+ [BC Habitat Wizard](http://maps.gov.bc.ca/ess/hm/habwiz/) 
+
+
+
+
+## References

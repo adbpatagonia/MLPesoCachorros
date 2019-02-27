@@ -1,0 +1,335 @@
+---
+title: ""
+author: "adb"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+     theme: readable
+     number_sections: true
+     toc: TRUE
+     toc_float: 
+       collapsed: FALSE
+     toc_depth: 3
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Sent to Jon Abell and Steve Sharron on Oct 23, 2018
+
+I received the hatchery data and have been tidying it up, *e.g.* the column 'Species' is a combination of species, brood, origin, markings, etc.     
+I have done quite a bit of tidying, but I have a few questions:     
+ 
+ 1. There are instances where a species is either:
+ + Colonized 
+ + Wild   
+ + Not specified    
+   How should I combine these data? *i.e.*, should I sum the not specified (NA in plot) to the wild?
+   
+  *Update.Nov 1. The historical dataset contained specification in some of the records in terms of the origin of fish, i.e. it contained the words `Colonized` or `Wild`, while other records had no specification regarding origin. Following inspection of data files produced during the span of the current project, it was determined that not specified fish were considered as wild, and therefore the number of not specified fish was summed to the number of wild fish to obtain a total estimate of outmigrating wild fish throughout the time series.  *   
+   
+ 2. There are several different names for trouts: 
+ + Cutthroat    
+ + Cutthroat and Steelhead     
+ + Steelhead     
+ + Trout     
+ Is there a way to reconcile these?     
+ 
+  *Update.Nov 1. Cutthroat and Steelhead: 1 record. Trout: 26 records. Have been ignored in the analyses *
+ 
+ 3. In the species column there are a few instances where it says:    
+  + "natural spawned". Should I assume these are wild fish?    
+  + "natural spawned & egg Plants". ??     
+  + "natural spawned & amp; egg Plants" . ??
+  
+   *Update.Nov 1. Ignored for analyses *
+ 
+ 4. In the species column there are several different ways to refer to marks:    
+  + marked   
+  + Adipose clipped   
+  + unmarked     
+  + clip    
+  What should I make of these?      
+  
+  *Update. Oct 29. Adipose clipped are colonized. From file "Y:\Projects - Active\1230 JHTMON Campbell River Water Use Plan\1 Data\Raw Data\JHTMON8\Quinsam Hatchery downstream migration\DOWNST2000.xls"*
+  
+ 5. In the species column there are records that say "by length". What should I make of these?  
+  
+  
+ 6. For steelhead, some records are named:     
+ + Steelhead Right Max LGB     
+ + Steelhead Left Max LGB    
+ What should I make of these?      
+ 
+ *Update. Oct 29. These are colonized. From file "Y:\Projects - Active\1230 JHTMON Campbell River Water Use Plan\1 Data\Raw Data\JHTMON8\Quinsam Hatchery downstream migration\DOWNST2000.xls"*
+ 
+    
+ 
+
+ 
+ 7. There are some instances where the species say (for example) '1974 brood', so should I assume that data comes from colonized fish hatched in 1974? 
+ 
+ 8. This is not a data *per se* question, but how can we produce 'cohort' numbers from this, given that there is a mix of fish born on different years?    
+ A handful of records in column 'Life.Stage' say '1yr smolt', '2yr smolt' (coho and steelhead). In those cases, it is straightforward, but in most records that distinction is not made. After cleaning up, there are these life stages:         
+ + Smolt     
+ + Fry     
+ + Kelts     
+ + Parr     
+ + n/a      
+ Considering this, I would start by filtering kelts (17 records for Steelhead and Cutthroat).      
+ Parr (1 record) and n/a (3 records) can be safely ignored (plot below).    
+ That leaves us with fry and smolt. Should I try to combine these life stages?     
+ Alternatively, should I concentrate on a particular life stage?     
+ 
+ 9. Jon, when I was in Victoria, you showed me there was a reliability code (and type of index, *i.e.* absolute or relative) associated with each escapement record. Is there a similar reliability code associated with juvenile data?       
+ 
+ 10. I checked the NuSEDS website https://open.canada.ca/data/en/dataset/c48669a3-045b-400d-b730-48aafe8c5ee6 but escapement data has not yet been updated. Latest data point is 2016. Is there a way to obtain latest data points? This is not critical      
+   
+ 11. I found historical:   
+ + daily discharge data       
+ https://wateroffice.ec.gc.ca/report/historical_e.html?stn=08HD004&mode=Table         
+ + and daily temp and precipitation data      
+ http://climate.weather.gc.ca/climate_data/daily_data_e.html?hlyRange=%7C&dlyRange=1975-09-01%7C2018-10-17&mlyRange=1975-01-01%7C2007-02-01&StationID=209&Prov=BC&urlExtension=_e.html&searchType=stnName&optLimit=yearRange&StartYear=1840&EndYear=2018&selRowPerPage=25&Line=0&searchMethod=contains&Month=12&Day=4&txtStationName=quinsam&timeframe=2&Year=1975     
+ However, it looks like it has to be downloaded one year at a time. Do you know if there is a faster way to get these data?       
+
+
+# Phone call with Jon. Oct 24, 2018 - 10 am 
+
+## Priority *spp*:     
+
+ * coho    
+ * chinook    
+ * steelhead    
+ * also present:     
+   + pink    
+   + chum    
+   + cutthroat    
+   
+Sockeye is not a priority *sp*. Number of escaped adult have always been low. There are, however, a few years when the number of fry reach > 20,000. Jon suspects this may be the result of not using species specific indices of capturability for the mark-recapture experiments from which these estimates were derived. Quite likely indices for coho were applied to sockeye. Check the numbers.       
+   
+  
+## Be mindful of species specific life histories:    
+
+ * Coho: At least 1 year in freshwater. They go to sea as 1 year old    
+ * Chinook: in Quinsam River, they are estuary type chinook. Short rearing period. Outmigrate shortly after hatching. When carrying out S-R analyses, relate them to adult escapement 1 year before    
+ * Pink: similar to chinook. Very short time in freshwater. When carrying out S-R analyses, relate them to adult escapement 1 year before    
+ * Chum: *idem* pink      
+ * Steelhead: age of outmigration is variable. All rear in freshwater for at least a year. Outmigrate at various ages. Most outmigrate at age 2. Between 1 and 3 years in freshwater. Outmigrate as smolts.     
+ 
+    
+## For the report, descibe: 
+
+ * time period    
+ * variability in #s     
+ * data collation methods: went to hatchery, digitized records, QA'd, and secured in EcoDAT       
+ * It would be good to include a table with details of life histories - Jon to send paper + reports on this      
+  
+   
+   
+## Answers to Qs from section above:     
+
+ * Q1. Do not combine data. Present totals, and then differentiate between wild colonized and not specified   
+ Also, Jon explained the term colonized: fish that were reared in hatchery and outplanted later.    
+ 
+ * Q2. Combine "Unspecified trout" = Trout + Cutthroat and Steelhead     
+ Do not present in report     
+ 
+ * Q4. Adipose clipped means they were reared in hatchery. Marked and clip do not necesarily mean reared in hatchery, as this may mean that they were marked as part of mark-recapture experiments. 
+ 
+ * Q8. We can safely ignore:     
+   + kelts     
+   + parr    
+   + n/a   
+ 
+   
+   
+## Outmigrating fish
+
+We are interested in reporting number of outmigrating fish, *i.e.*
+
+ * Smolts, for
+   + Coho   
+   + Cutthroat    
+   + Steelhead   
+ * Fry, for    
+   + chinook    
+   + Pink    
+   + Chum     
+  
+Present only smolt or fry, according to *sp*, and label them accordingly.    
+
+# Burt's report    
+
+Salmonid fish species in the QUinsam River:    
+ 
+ * Chinook   
+   + anadromous    
+ * Coho    
+   + anadromous    
+ * Chum    
+   + anadromous    
+ * Pink     
+   + anadromous    
+ * Sockeye     
+   + anadromous    
+   + resident
+ * rainbow trout     
+   + anadromous    
+   + resident     
+ * cutthroat trout     
+   + anadromous    
+   + resident   
+ * Dolly Varden     
+   + anadromous    
+   + resident   
+
+Differnetiating between anadromous and resident fish (RB and CT) will be important for analyses. Is this doable?  
+
+ * Maybe going through raw data (Excel files)?    
+ * Maybe find proportion of resident vs anadromous in typical BC streams, and apply those proportions?      
+
+
+# Plots
+
+I excluded from this plot the following *spp*:    
+
+  *  Lamprey    
+  *  Sculpin   
+  *  Dolly Varden     
+ 
+This plot is produced by species and type (*i.e.* wild, colonized, not specified (NA)).    
+Colors indicate life stages. You can choose which life stages to show, clicking on the legend    
+ 
+
+```{r plot1, fig.width = 11, fig.height = 15, echo=FALSE, message=FALSE, warning=FALSE}
+jp3
+    ```
+
+<!-- This plot is produced by species, life stage, and type (*i.e.* wild, colonized, not specified (NA))  -->
+
+
+<!-- ```{r plot2, fig.width = 11, fig.height = 25, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- p2 -->
+<!--     ``` -->
+# plots after call with Jon        
+
+## Outmigrating Fish    
+
+### Numbers     
+
+These plots show total outmigrating fish, *i.e.*       
+ 
+ * Smolts, for
+   + Coho   
+   + Cutthroat    
+   + Steelhead   
+ * Fry, for    
+   + chinook    
+   + Pink    
+   + Chum     
+ 
+ 
+```{r plot2, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE}
+ grid.draw(juvplot)
+```
+
+### Correlation among number of outmigrating fish     
+
+```{r corrplot, fig.width = 6, fig.height = 6, echo=FALSE, message=FALSE, warning=FALSE}
+plotdata %>%
+  group_by(sp) %>%
+  mutate(std_fish = std_variable(totfish)) %>%
+  select(-totfish) %>%
+  spread(key = sp, value = std_fish ) %>%
+  select(-Year) %>%
+  cor(use = 'complete.obs') %>%
+  corrplot(method="ellipse", type="lower", order = "hclust",
+           sig.level = 0.05, insig = "blank",
+           tl.col = "black", tl.srt = 0,
+           col = RColorBrewer::brewer.pal(n=8, name="RdBu"))
+    ```
+
+### Outmigrating fish by origin    
+
+```{r outorig, fig.width = 11, fig.height = 13, echo=FALSE, message=FALSE, warning=FALSE}
+grid.draw(juvplotorig)
+    ```
+
+## All juvenile fish by, *i.e.* sums of fry and smolt for all *spp*     
+
+There is synchrony among species, at least in some years - particularly where there are peaks and nadirs      
+
+```{r logplot, fig.width = 10, fig.height = 6, echo=FALSE, message=FALSE, warning=FALSE}
+ggplotly(logplot)
+    ```
+
+
+
+## Adults     
+
+```{r adplot, fig.width = 11, fig.height = 15, echo=FALSE, message=FALSE, warning=FALSE}
+grid.draw(adplot)
+    ```
+
+
+## Stock-Recruitment Curves     
+### Pink Salmon     
+
+Stock-Recruit Curves for Pink Salmon, lag between stock and recruits is 2 years      
+
+```{r pinkSRplots, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE}
+ggplotly(PinkSR)
+
+    ```
+
+### Chum Salmon
+
+Stock-Recruit Curves for Chum Salmon, lag between stock and recruits is 2 years
+
+```{r chumSRplots, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE}
+ggplotly(ChumSR)
+
+    ```
+
+### Coho Salmon     
+
+Stock-Recruit Curves for Coho Salmon, lag between stock and recruits is 1 year    
+I summed the number of wild and not specified fish to obtain number of recruits. I discarded the colonized fish.      
+
+```{r cohoSRplots, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE}
+ggplotly(CohoSR)
+
+    ```
+
+<!-- This curve uses only wild fish as recruits       -->
+
+<!-- ```{r wildcohoSRplots, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE} -->
+<!-- ggplotly(wildCohoSR) -->
+
+<!--     ``` -->
+
+
+### Chinook Salmon     
+
+Stock-Recruit Curves for Chinook Salmon, lag between stock and recruits is 1 year      
+
+```{r chinookSRplots, fig.width = 11, fig.height = 8, echo=FALSE, message=FALSE, warning=FALSE}
+ggplotly(ChinookSR)
+
+    ```
+
+
+# TO DO       
+
+
+
+ * work on S-R relationships   
+ 
+   + incorporate environmental information, including water use      
+   + incorporate number of outplanted fish as covariate. If this has any effect, it would have direct management implications for the hatchery.            
+   
+   
+   
+   
