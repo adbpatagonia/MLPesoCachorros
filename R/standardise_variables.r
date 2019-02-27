@@ -3,6 +3,6 @@
 
 ## Function to standardise vector of values
 
-std <- function(x){
+std <- function(x) {
   (x - mean(x, na.rm = T)) / sd(x, na.rm = T)
 }
