@@ -19,10 +19,12 @@ library('tidyverse')
 library('cowplot')
 library('ggsidekick')
 library('tidybayes')
+library(yarrr)
 #library('plotly')
 
 # cargar datos ----
 ml <- read.csv('data/MLpesos.csv', header = T, as.is = T)
+#ml <- read.csv('data/MLpesos_Apr2019.csv', header = T, as.is = T)
 aao <- read.table('data-raw/monthly.aao.index.b79.current.ascii')
 sam <- read.table('data-raw/newsam.1957.2007.txt')
 
@@ -38,7 +40,7 @@ mldat <- mldat %>%
   mutate(sexo = replace(sexo, sexo == 'MACHO', 'Macho'))
 # encontrar outliers
 which.max(mldat$pesos) # hay un peso que es un outlier, peso = 1332.5, celda B64 en el archivo que envio malena
-mldat <- mldat[-which.max(mldat$pesos),]
+#mldat <- mldat[-which.max(mldat$pesos),]
 # convertir sexo y evento a factores
 mldat$sexo <- as.factor(mldat$sexo)
 mldat$evento <- as.factor(mldat$evento)
