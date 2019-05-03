@@ -21,6 +21,9 @@ library('ggsidekick')
 library('tidybayes')
 library(yarrr)
 #library('plotly')
+library('here')
+library('kableExtra')
+library(plotly)
 
 # cargar datos ----
 ml <- read.csv('data/MLpesos.csv', header = T, as.is = T)
@@ -100,6 +103,24 @@ pirateplot(formula = peso ~  evento.js + sexo,
            theme = 2,
            inf.disp = 'bean')
 
+# funcion continua ----
+ancova.int <- lm(peso ~ potencia.mar.agos * sexo, data = mls)
+ancova <- lm(peso ~ potencia.mar.agos + sexo, data = mls)
+
+mls$pred <- predict(ancova, interval = 'confidence', type = 'response')
+
+ancovaplot <- ggplot(data = mls, aes(x = potencia.mar.agos, y = peso, color = sexo)) +
+  geom_point(alpha = 0.4, position = position_jitterdodge(dodge.width = 0.3, jitter.width = 0.1))  +
+   geom_line(aes(y = mls$pred[,1])) +
+  geom_ribbon(aes(ymin = mls$pred[,2], ymax = mls$pred[,3], fill = sexo, color = NA), alpha = 0.4) +
+  theme_sleek() +
+  theme(legend.position = c(0.9, 0.95)) +
+  scale_color_manual(name = '', values = c('red', 'blue')) +
+  scale_fill_manual(name = '', values = c('red', 'blue')) +
+  ylab('Peso (Kg)') + xlab('Potencia')
+
+
+
 
 
 # modelo ----
@@ -122,7 +143,10 @@ anout <- anova(lm2)
 coefficients(lm2)
 confint(lm2)
 
-
+# output ----
 write.csv(dat, 'output/pirate.csv', row.names=F)
 write.csv(anout, 'output/anova.csv', row.names=T)
+ggsave(filename = 'output/ancovaplot.png', plot = ancovaplot, width = 8, height = 5, units = 'in' )
 
+# compile report ----
+compile_rmd('MLPesoCachorros')
