@@ -71,10 +71,17 @@ mls <- mls %>%
 # pirate plots ----
 # * potencia Marzo-Agosto ----
 # ** plot ----
+plotdat <- mls
+
+names(plotdat) <- c('year', 'jas', 'evento,js', 'marca', 'mag', 'Sexo', 'Peso', 'ENSO')
+
+
 png(filename = 'output/Peso_Sexo_Evento.png', width = 8, height = 5, units = 'in', res = 400)
- pirateplot(formula = peso ~  evento.ma + sexo,
-           data = mls,
+ pirateplot(formula = Peso ~  ENSO + Sexo,
+           data = plotdat,
            theme = 2,
+           ylab = 'Peso (Kg)',
+         #  yaxp = c(50, 300, 6),
            inf.method = 'hdi',
            pal = 'black',
            inf.disp = 'bean')
@@ -109,8 +116,13 @@ plot(lm2)   # sin problemas con los supuestos
 anova (lm1) # interaccion no es significativa
 
 # * tabla ANOVA modelo sin interaccion ----
-anova(lm2)
+anout <- anova(lm2)
 
 # * parametros ----
 coefficients(lm2)
 confint(lm2)
+
+
+write.csv(dat, 'output/pirate.csv', row.names=F)
+write.csv(anout, 'output/anova.csv', row.names=T)
+
