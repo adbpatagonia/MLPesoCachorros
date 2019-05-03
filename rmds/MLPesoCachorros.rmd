@@ -24,8 +24,9 @@ Enviados por Malena Pfoh
 Todos los analisis estan en esta direccion    
 https://github.com/adbpatagonia/MLPesoCachorros    
 
-graficos: 
-https://raw.githubusercontent.com/adbpatagonia/MLPesoCachorros/master/output/Peso_Sexo_Evento.png   
+graficos:     
+https://raw.githubusercontent.com/adbpatagonia/MLPesoCachorros/master/output/Peso_Sexo_Evento.png       
+
 https://raw.githubusercontent.com/adbpatagonia/MLPesoCachorros/master/output/ancovaplot.png
 
 
@@ -62,7 +63,7 @@ Entonces, descartarla y continuar solo con los efectos principales
       kable_styling("striped")
 ```
 
-Ambos efectos principales son significativos a un nivel de $alpha$ de 5%.    
+Ambos efectos principales son significativos a un nivel de $\alpha$ de 5%.    
 
 
 Valores de los parametros del ANOVA de 2 vias (con intervalo de confianza del 95%): 
@@ -135,7 +136,7 @@ Esto quiere decir que las lineas de regresion de machos y hembras son perfectame
       kable_styling("striped")
 ```
 
-Ambos efectos principales son significativos a un nivel de $alpha$ de 5%.    
+Ambos efectos principales son significativos a un nivel de $\alpha$ de 5%.    
 
 ```{r ANCOVA params, echo=FALSE}
    knitr::kable(data.frame(paramvalue = coefficients(ancova), confint(ancova))) %>%
@@ -145,8 +146,21 @@ Ambos efectos principales son significativos a un nivel de $alpha$ de 5%.
  
  Es decir, que los machos son alrededor de 10 kg maspesados que las hembras, y que el ENSO tiene un efecto negativo en el peso al destete.   
 
-![](../output/ancovaplot.png)
+
+```{r ANCOVA plot, echo=FALSE, warning=FALSE}
+   ggplotly(ancovaplot)
+```
 
 # Caveat      
 
-Los valores de p-value son muy bajos por la cantidad de datos, que son muchos. Los valores de p-value son funciones directas del tamano muestral. Cuando se tienen muchos datos es altamente probable que las relaciones que se encuentren sean significativas. Ojo, esto no quiere decir que no sean reales (de hecho, fijate que las interacciones fueron no significativas). Esto quiere decir que hay q
+Los valores de p-value son muy bajos por la cantidad de datos, que son muchos. Los valores de p-value son funciones directas del tamano muestral. Cuando se tienen muchos datos es altamente probable que las relaciones que se encuentren sean significativas. Ojo, esto no quiere decir que no sean reales (de hecho, fijate que las interacciones fueron no significativas). Esto quiere decir que hay que ser cuidadosos al presentar los valores y no leer de mas en el valor tan bajo de p-value.    
+
+# Conclusiones    
+
+Personalmente me satisface mas el primer analisis, en el que se considera al ENSO como variable discreta.      
+De todos modos, ambos analisis apuntan a las mismas conclusiones:   
+  
+  1. El ENSO influye en el peso de los cachorros al destete     
+   a. SI  consideramos al ENSO como discreto, los pesos son  Nina > Neutro > Nino    
+   b. Si consideramos al ENSO como continuo, el ENSO tiene un efecto negativo sobre el peso al destete    
+  2. Los machos son mas pesados que las hembras al destete (esto no es nuevo, pero estamos controlando el ruido que esto potencialmente podia introducir en la relacion de peso con ENSO)     
