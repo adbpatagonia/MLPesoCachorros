@@ -107,17 +107,20 @@ pirateplot(formula = peso ~  evento.js + sexo,
 ancova.int <- lm(peso ~ potencia.mar.agos * sexo, data = mls)
 ancova <- lm(peso ~ potencia.mar.agos + sexo, data = mls)
 
-mls$pred <- predict(ancova, interval = 'confidence', type = 'response')
+
+  pred <- as.data.frame(predict(ancova, interval = 'confidence', type = 'response'))
+  mls <- data.frame(mls, pred)
 
 ancovaplot <- ggplot(data = mls, aes(x = potencia.mar.agos, y = peso, color = sexo)) +
   geom_point(alpha = 0.4, position = position_jitterdodge(dodge.width = 0.3, jitter.width = 0.1))  +
-   geom_line(aes(y = mls$pred[,1])) +
-  geom_ribbon(aes(ymin = mls$pred[,2], ymax = mls$pred[,3], fill = sexo, color = NA), alpha = 0.4) +
+   geom_line(data = unique(mls[,c('potencia.mar.agos', 'sexo', 'fit')]), aes(y = fit), position = position_jitterdodge(dodge.width = 0.3, jitter.width = 0)) +
+  geom_ribbon(aes(ymin = mls$lwr, ymax = mls$upr, fill = sexo, color = NA), alpha = 0.4, position = position_jitterdodge(dodge.width = 0.3, jitter.width = 0)) +
   theme_sleek() +
   theme(legend.position = c(0.9, 0.95)) +
   scale_color_manual(name = '', values = c('red', 'blue')) +
   scale_fill_manual(name = '', values = c('red', 'blue')) +
-  ylab('Peso (Kg)') + xlab('Potencia')
+  ylab('Peso (Kg)') + xlab('Potencia') #+
+ #geom_smooth(method = "lm", se = TRUE, fullrange = TRUE)
 
 
 

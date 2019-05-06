@@ -1,6 +1,6 @@
 ---
 title: "Peso al destete *Mirounga leonina*, Isla 25 de Mayo"
-#bibliography: WCT_biblio.bib   # bibliographic library. Place in same folder as .Rmd
+bibliography: MLPesoCachorros.bib   # bibliographic library. Place in same folder as .Rmd
 output:
   html_document:
     number_sections: no
@@ -164,3 +164,11 @@ De todos modos, ambos analisis apuntan a las mismas conclusiones:
    a. SI  consideramos al ENSO como discreto, los pesos son  Nina > Neutro > Nino    
    b. Si consideramos al ENSO como continuo, el ENSO tiene un efecto negativo sobre el peso al destete    
   2. Los machos son mas pesados que las hembras al destete (esto no es nuevo, pero estamos controlando el ruido que esto potencialmente podia introducir en la relacion de peso con ENSO)     
+  
+# Software utilizado  
+
+para los analisis de modelos lineales generales use la funcion `lm()` del paquete `base()` de R Statistical Language  (@Rpk)       
+para el grafico de ANCOVA use el paquete `ggplot2` (@ggplot2pk)    
+para el pirate plot use la funcion `pirateplot()` del paquete `yarrr` (@yarrrpk)
+
+# Referencias 
