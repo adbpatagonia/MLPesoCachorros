@@ -1,7 +1,7 @@
-FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra vez volvió,Edad última vez visto,Porcentaje retorno,Total  cachorros,Total que volvieron,Promedio edad 1ra aparición,Desvío prom 1ra aparición,Peso promedio vivos,Desvío estándar peso vivos,Peso promedio muertos/no vistos,Desvío estándar peso muertos/no vistos
-8ST,1995,Hembra,151.5,1,8,8,100,1,1,8.00,0.00,NO TENIDO EN CUENTA,,,
-51ST,1996,Hembra,120.5,8,8,16,100,1,1,8.00,0.00,NO TENIDO EN CUENTA,,,
-56ST,1997,Hembra,152,2,9,14,100,1,1,9.00,0.00,NO TENIDO EN CUENTA,,,
+fuego,birth.year,sex,weaning.weight,nro.anos.visto.volver,edad.1ra.vez.volvio,edad.ultima.vez.visto,Porcentaje retorno,Total  cachorros,Total que volvieron,promedio.edad.1ra.aparicion,desvio.prom.1ra.aparicion,Peso promedio vivos,sd.peso.vivos,Peso promedio muertos/no vistos,sd.peso.muertos
+8ST,1995,Hembra,151.5,1,8,8,100,1,1,8,0,NO TENIDO EN CUENTA,,,
+51ST,1996,Hembra,120.5,8,8,16,100,1,1,8,0,NO TENIDO EN CUENTA,,,
+56ST,1997,Hembra,152,2,9,14,100,1,1,9,0,NO TENIDO EN CUENTA,,,
 90ST,1998,Hembra,164.5,1,8,8,100,9,9,4.33,1.26,NO TENIDO EN CUENTA,,,
 94ST,1998,Hembra,177,4,5,12,,,,,,,,,
 100ST,1998,Hembra,149.5,2,4,12,,,,,,,,,
@@ -11,7 +11,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 116ST,1998,Hembra,154,12,3,20,,,,,,,,,
 119ST,1998,Hembra,140.5,2,5,18,,,,,,,,,
 120ST,1998,Hembra,85,3,3,20,,,,,,,,,
-127ST,2001,Hembra,142.5,0,,,21.05,38,8,7.00,3.25,165.56,21.08,149.67,25.74
+127ST,2001,Hembra,142.5,0,,,21.05,38,8,7,3.25,165.56,21.08,149.67,25.74
 128ST,2001,Hembra,150,0,,,,,,,,,,,
 136ST,2001,Hembra,155.5,0,,,,,,,,,,,
 137ST,2001,Hembra,194,0,,,,,,,,,,,
@@ -49,7 +49,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 197ST,2001,Hembra,128,0,,,,,,,,,,,
 203ST,2001,Hembra,190.5,0,,,,,,,,,,,
 204ST,2001,Hembra,143.5,0,,,,,,,,,,,
-207ST,2002,Hembra,104.5,0,,,30.23,86,26,6.85,3.60,139.25,22.46,141.20,25.06
+207ST,2002,Hembra,104.5,0,,,30.23,86,26,6.85,3.6,139.25,22.46,141.2,25.06
 211ST,2002,Hembra,155,0,,,,,,,,,,,
 214ST,2002,Hembra,153,0,,,,,,,,,,,
 215ST,2002,Hembra,115.5,0,,,,,,,,,,,
@@ -135,7 +135,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 370ST,2002,Hembra,180.5,0,,,,,,,,,,,
 371ST,2002,Hembra,99.5,1,10,10,,,,,,,,,
 376ST,2002,Hembra,148,0,,,,,,,,,,,
-381ST,2003,Hembra,153,5,3,9,30.16,63,19,5.05,2.59,152.24,22.10,149.88,23.52
+381ST,2003,Hembra,153,5,3,9,30.16,63,19,5.05,2.59,152.24,22.1,149.88,23.52
 382ST,2003,Hembra,139.5,1,3,3,,,,,,,,,
 385st,2003,Hembra,200,2,7,10,,,,,,,,,
 387st,2003,Hembra,157.5,2,7,9,,,,,,,,,
@@ -175,7 +175,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 457st,2003,Hembra,96,0,,,,,,,,,,,
 460st,2003,Hembra,163.5,0,,,,,,,,,,,
 468st,2003,Hembra,137,0,,,,,,,,,,,
-470st,2003,Hembra,166,0,,Muerto año de nacimiento,,,,,,,,,
+470st,2003,Hembra,166,0,,Muerto aï¿½o de nacimiento,,,,,,,,,
 471st,2003,Hembra,150.5,0,,,,,,,,,,,
 472st,2003,Hembra,106.5,0,,,,,,,,,,,
 478st,2003,Hembra,185,0,,,,,,,,,,,
@@ -291,7 +291,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 688ST,2005,Hembra,157.5,1,3,3,,,,,,,,,
 689ST,2005,Hembra,140,0,,,,,,,,,,,
 690ST,2005,Hembra,167.5,1,11,11,,,,,,,,,
-691ST,2005,Hembra,143,0,,Muerto año de nacimiento,,,,,,,,,
+691ST,2005,Hembra,143,0,,Muerto aï¿½o de nacimiento,,,,,,,,,
 693ST,2005,Hembra,170,0,,,,,,,,,,,
 694ST,2005,Hembra,168,0,,,,,,,,,,,
 695ST,2005,Hembra,185.5,0,,,,,,,,,,,
@@ -371,7 +371,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 869ST,2006,Hembra,134,1,10,10,,,,,,,,,
 870ST,2006,Hembra,145,4,4,12,,,,,,,,,
 872ST,2006,Hembra,179.5,0,,,,,,,,,,,
-878ST,2007,Hembra,161,3,9,11,50.91,55,28,5.14,2.41,156.50,20.86,145.91,25.89
+878ST,2007,Hembra,161,3,9,11,50.91,55,28,5.14,2.41,156.5,20.86,145.91,25.89
 879ST,2007,Hembra,129.5,2,5,11,,,,,,,,,
 881ST,2007,Hembra,108,0,,,,,,,,,,,
 882ST,2007,Hembra,153,0,,,,,,,,,,,
@@ -492,7 +492,7 @@ FUEGO,AÑO MARCA/NACIMIENTO,SEXO,PESO AL DESTETE,Nro años visto volver,Edad 1ra v
 1090ST,2008,Hembra,152,0,,,,,,,,,,,
 1092ST,2008,Hembra,165,0,,,,,,,,,,,
 1093ST,2008,Hembra,190,1,5,5,,,,,,,,,
-A2,2010,Hembra,126.5,0,,,25,44,11,5.00,2.00,161.41,29.68,154.64,31.60
+A2,2010,Hembra,126.5,0,,,25,44,11,5,2,161.41,29.68,154.64,31.6
 A5,2010,Hembra,148.5,0,,,,,,,,,,,
 A8,2010,Hembra,149.5,0,,,,,,,,,,,
 A12,2010,Hembra,188,0,,,,,,,,,,,
@@ -636,7 +636,7 @@ A318,2012,Hembra,165.5,0,,,,,,,,,,,
 A319,2012,Hembra,121,0,,,,,,,,,,,
 A320,2012,Hembra,127,0,,,,,,,,,,,
 A322,2012,Hembra,126.5,0,,,,,,,,,,,
-A326,2013,Hembra,122,0,,,23.33,60,14,3.43,1.14,156.46,25.31,146.80,31.81
+A326,2013,Hembra,122,0,,,23.33,60,14,3.43,1.14,156.46,25.31,146.8,31.81
 A331,2013,Hembra,164,2,2,5,,,,,,,,,
 A332,2013,Hembra,199.5,0,,,,,,,,,,,
 A333,2013,Hembra,125.5,0,,,,,,,,,,,
@@ -725,7 +725,7 @@ A488,2014,Hembra,144.5,0,,,,,,,,,,,
 A489,2014,Hembra,160,1,4,4,,,,,,,,,
 A490,2014,Hembra,204,0,,,,,,,,,,,
 A492,2014,Hembra,161,0,,,,,,,,,,,
-A494,2015,Hembra,118,0,,,0,15,0,0.00,0.00,NO TENIDO EN CUENTA,,,
+A494,2015,Hembra,118,0,,,0,15,0,0,0,NO TENIDO EN CUENTA,,,
 A497,2015,Hembra,177,0,,,,,,,,,,,
 A498,2015,Hembra,196.5,0,,,,,,,,,,,
 A499,2015,Hembra,120,0,,,,,,,,,,,
@@ -741,8 +741,8 @@ A526,2015,Hembra,143,0,,,,,,,,,,,
 A528,2015,Hembra,210,0,,,,,,,,,,,
 A529,2015,Hembra,170,0,,,,,,,,,,,
 HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
-12ST,1995,Macho,151.5,3,6,15,100,1,1,3.00,0.00,NO TENIDO EN CUENTA,,,
-67ST,1998,Macho,137,2,2,12,100,9,9,4.56,2.40,NO TENIDO EN CUENTA,,,
+12ST,1995,Macho,151.5,3,6,15,100,1,1,3,0,NO TENIDO EN CUENTA,,,
+67ST,1998,Macho,137,2,2,12,100,9,9,4.56,2.4,NO TENIDO EN CUENTA,,,
 72ST,1998,Macho,182,6,7,17,,,,,,,,,
 78ST,1998,Macho,155,2,2,4,,,,,,,,,
 81ST,1998,Macho,162.5,1,2,2,,,,,,,,,
@@ -771,7 +771,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 156ST,2001,Macho,195,0,,,,,,,,,,,
 157ST,2001,Macho,137,1,11,11,,,,,,,,,
 158ST,2001,Macho,151,0,,,,,,,,,,,
-162ST,2001,Macho,185.5,0,,Murió el mismo año de nacimiento,,,,,,,,,
+162ST,2001,Macho,185.5,0,,Muriï¿½ el mismo aï¿½o de nacimiento,,,,,,,,,
 163ST,2001,Macho,150.5,0,,,,,,,,,,,
 165ST,2001,Macho,141.5,1,17,17,,,,,,,,,
 172ST,2001,Macho,118,4,7,14,,,,,,,,,
@@ -792,7 +792,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 200ST,2001,Macho,149,0,,,,,,,,,,,
 201ST,2001,Macho,184,0,,,,,,,,,,,
 202ST,2001,Macho,173,0,,,,,,,,,,,
-205ST,2002,Macho,148,0,,,17.44,86,15,9.00,4.13,160.53,36.13,159.04,27.91
+205ST,2002,Macho,148,0,,,17.44,86,15,9,4.13,160.53,36.13,159.04,27.91
 206ST,2002,Macho,173.5,0,,,,,,,,,,,
 208ST,2002,Macho,175.5,0,,,,,,,,,,,
 209ST,2002,Macho,159,0,,,,,,,,,,,
@@ -878,7 +878,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 373ST,2002,Macho,171.5,0,,,,,,,,,,,
 374ST,2002,Macho,130,0,,,,,,,,,,,
 375ST,2002,Macho,165.5,0,,,,,,,,,,,
-380ST,2003,Macho,139.5,7,3,9,27.14,70,19,4.21,2.29,150.60,23.75,160.92,26.67
+380ST,2003,Macho,139.5,7,3,9,27.14,70,19,4.21,2.29,150.6,23.75,160.92,26.67
 383ST,2003,Macho,166.5,0,,,,,,,,,,,
 384ST,2003,Macho,153,3,3,8,,,,,,,,,
 386st,2003,Macho,176,0,,,,,,,,,,,
@@ -1087,7 +1087,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 785ST,2006,Macho,141.5,2,3,10,,,,,,,,,
 788ST,2006,Macho,155.5,0,,,,,,,,,,,
 789ST,2006,Macho,185,1,5,5,,,,,,,,,
-790ST0 (ST0 x confusión),2006,Macho,143.5,1,3,3,,,,,,,,,
+790ST0 (ST0 x confusiï¿½n),2006,Macho,143.5,1,3,3,,,,,,,,,
 792ST,2006,Macho,170.5,0,,,,,,,,,,,
 793ST,2006,Macho,149,0,,,,,,,,,,,
 795ST,2006,Macho,184,1,4,4,,,,,,,,,
@@ -1183,7 +1183,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 971ST,2007,Macho,196.5,5,1,10,,,,,,,,,
 972ST,2007,Macho,140,3,4,6,,,,,,,,,
 976ST,2007,Macho,179,0,,,,,,,,,,,
-"976ST (Ojo, se repite con uno de 2007) Figura en ambas planillas, deben haber repetido número ese año sin darse cuenta.",2008,Macho,182.5,0,,,26.42,53,14,3.50,1.57,163.38,33.47,165.28,29.63
+"976ST (Ojo, se repite con uno de 2007) Figura en ambas planillas, deben haber repetido nï¿½mero ese aï¿½o sin darse cuenta.",2008,Macho,182.5,0,,,26.42,53,14,3.5,1.57,163.38,33.47,165.28,29.63
 980ST,2008,Macho,187.5,0,,,,,,,,,,,
 981ST,2008,Macho,117,0,,,,,,,,,,,
 982ST,2008,Macho,163.5,0,,,,,,,,,,,
@@ -1236,7 +1236,7 @@ HEMBRAS,,,,,,,31.58,741,234,5.21,2.29,155.68,23.78,150.13,26.89
 1089ST,2008,Macho,171,0,,,,,,,,,,,
 1091ST,2008,Macho,159,1,7,7,,,,,,,,,
 1094ST,2008,Macho,190,0,,,,,,,,,,,
-A1,2010,Macho,187.5,3,2,5,30,60,18,4.00,2.22,155.89,30.51,160.36,29.21
+A1,2010,Macho,187.5,3,2,5,30,60,18,4,2.22,155.89,30.51,160.36,29.21
 A3,2010,Macho,215,2,2,5,,,,,,,,,
 A4,2010,Macho,121,0,,,,,,,,,,,
 A6,2010,Macho,192.5,0,,,,,,,,,,,
@@ -1278,7 +1278,7 @@ A71,2010,Macho,169.5,0,,,,,,,,,,,
 A72,2010,Macho,122.5,0,,,,,,,,,,,
 A73,2010,Macho,153.5,4,2,8,,,,,,,,,
 A74,2010,Macho,171.5,0,,,,,,,,,,,
-A78,2010,Macho,170,0,,Muerto año de nacimiento,,,,,,,,,
+A78,2010,Macho,170,0,,Muerto aï¿½o de nacimiento,,,,,,,,,
 A79,2010,Macho,198,0,,,,,,,,,,,
 A80,2010,Macho,206,0,,,,,,,,,,,
 A83,2010,Macho,147.5,0,,,,,,,,,,,
@@ -1493,7 +1493,7 @@ A475,2014,Macho,203,1,1,1,,,,,,,,,
 A477,2014,Macho,150,0,,,,,,,,,,,
 A483,2014,Macho,252,1,1,1,,,,,,,,,
 A491,2014,Macho,167.5,0,,,,,,,,,,,
-A493,2015,Macho,128,1,2,2,14.28,21,3,2.00,0.00,NO TENIDO EN CUENTA,,,
+A493,2015,Macho,128,1,2,2,14.28,21,3,2,0,NO TENIDO EN CUENTA,,,
 A495,2015,Macho,179,0,,,,,,,,,,,
 A496,2015,Macho,93.5,0,,,,,,,,,,,
 A500,2015,Macho,140,0,,,,,,,,,,,
