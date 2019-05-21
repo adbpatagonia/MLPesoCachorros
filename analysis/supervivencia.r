@@ -10,6 +10,8 @@ library('tidybayes')
 library(yarrr)
 #library('plotly')
 library('pgirmess')   # for permutation tests
+library('here')
+library('kableExtra')
 
 # cargar datos ----
 sup <- read.csv('data/supervivencia.csv', header = T, as.is = T)
@@ -18,7 +20,7 @@ sup <- read.csv('data/supervivencia.csv', header = T, as.is = T)
 sup <- sup[,c(2:7)]
 names(sup) <- c('marcado', 'sexo', 'peso', 'n.resight', 'age.first.resight', 'age.last.resight')
 
-sup <- sup %>% filter(marcado < 2014)
+
 
 sup$resight <- ifelse(sup$n.resight == 0, 0, 1)
 sup$sexo <- as.factor(sup$sexo)
@@ -41,7 +43,7 @@ sup <- sup %>%
 # * ca;cular medias ----
 mafr <- sup %>%
   group_by(sexo) %>%
-  summarise(meanafr = median(age.first.resight, na.rm = TRUE))
+  summarise(meanafr = mean(age.first.resight, na.rm = TRUE))
 
 presight <- ggplot(data = sup, aes(x = age.first.resight, fill = sexo)) +
   geom_density(alpha = 0.4) +
@@ -54,6 +56,11 @@ presight2 <- ggplot(data = sup, aes(x = n.resight, fill = sexo)) +
 #  geom_vline(data = mafr, aes(xintercept = meanafr, color = sexo)) +
   theme(legend.position =  c(0.8, 0.9), legend.title = element_blank()) +
   xlab('Nro.años.visto.volver')
+
+
+# media de edad al reavistamiento 5 anos, por ende usar la serie de datos desde el 2013
+sup <- sup %>% filter(marcado < 2014)
+
 
 # explorar datos ----
 par(mar = c(5,5,4,2))
@@ -166,5 +173,6 @@ cowplot::ggsave(plot = plog, filename = 'output/ProbAvist_Sexo_Peso.png', width 
 cowplot::ggsave(plot = presight, filename = 'output/Distribucion_Edad_Primer_Reavistamiento.png', width = 10, height = 6)
 cowplot::ggsave(plot = presight2, filename = 'output/Distribucion_N_Reavistamiento.png', width = 10, height = 6)
 
-
+# compilar reporte ----
+compile_rmd('Supervivencia')
 
